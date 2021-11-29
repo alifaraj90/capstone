@@ -91,7 +91,7 @@ def get_scatter_plot(entered_site, slider):
     else:
         filtered_df = spacex_df[spacex_df['Launch Site'] == entered_site]
         title = 'Correlation between Payload and Success for %s' % entered_site
-
+    filtered_df = filtered_df[(filtered_df['Payload Mass (kg)'] >= slider[0]) & (filtered_df['Payload Mass (kg)'] <= slider[1])]
     fig = px.scatter(filtered_df, 'Payload Mass (kg)', 'class', color="Booster Version Category", title=title)
     return fig
 
